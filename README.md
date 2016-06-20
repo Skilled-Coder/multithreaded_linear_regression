@@ -31,7 +31,7 @@ the result of each thread will be the line-of-best-fit for each relationship, wh
 
 TODO:
 
-- start project                            X 20 August 2016
+- start project XXXXX 20 August 2016
 
 - i/o data set
 
