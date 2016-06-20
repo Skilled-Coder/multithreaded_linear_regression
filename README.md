@@ -17,7 +17,7 @@ the goal of this project is to learn/practice a few concepts and connect them to
 
 4. practice c - this is my second c program in recent memory, so i'm excited to get my hands (really) dirty
 
-i'm hoping that the result of this practice will be that i'm better prepared for 42 - i will be attending Piscine in a little over a month and i want to be ready
+i'm hoping that the result of this practice will be that i'm better prepared for 42 - i will be attending Piscine in a little over a month and want to be ready
 
 
 what this code will do:
