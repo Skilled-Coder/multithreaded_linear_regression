@@ -33,7 +33,7 @@ TODO:
 
 - start project XXXXX 20 August 2016
 
-- i/o data set
+- input data from file XXXXX 22 August 2016
 
 - linear regression on one thread
 
