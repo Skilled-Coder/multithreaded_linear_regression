@@ -1,8 +1,6 @@
 /*
-this file takes in a .csv file and prints the line-of-best-fit for each column relative to the target (first) column
+this file takes in a .csv file and prints the line-of-best-fit for each row relative to the target (first) row
 */
-
-int MAX_ELEMENT_SIZE = 1000000000; //maximum size of digits allowed in data
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -10,7 +8,26 @@ int MAX_ELEMENT_SIZE = 1000000000; //maximum size of digits allowed in data
 #include <limits.h>
 #include <pthread.h>
 
-char *linear_regression(int *target_data, int *other_data);
+struct thread_args {
+  int thread_id;
+  double *target_row;
+  double *other_row;
+};
+
+void *linear_regression(void *thread_args_array){
+  struct thread_args *thread_data;
+  thread_data = (struct thread_args *) thread_args_array;
+  int thread_id = thread_data->thread_id;
+  double *target_row = thread_data->target_row;
+  double *other_row = thread_data->other_row;
+
+  for(int i=0;i<sizeof(other_row);i++)
+    printf("%lf ", other_row[i]);
+
+  printf("\n");
+
+  pthread_exit(NULL);
+}
 
 int main(int argc, char **argv) {
 
@@ -63,15 +80,25 @@ int main(int argc, char **argv) {
     }
   }
 
-  for(int i=0;i<rowcount;i++) {
-    for(int j=0;j<colcount;j++)
-      printf("%lf ", complete_data_set[i][j]);
-    printf("\n");
+  pthread_t threads[colcount-1]; //initialize colcount-1 threads to run on
+  int thread_temp;
+  struct thread_args thread_args_array[colcount-1];
+
+  //check if data was inserted correctly
+  //for(int i=0;i<rowcount;i++) {
+  //  for(int j=0;j<colcount;j++) {
+  //    printf("%lf ", complete_data_set[i][j]);
+  //  }
+  //  printf("\n");
+  //}
+
+  //load target and other data into each thread_args_array then launch linear_regression
+  for(int i=0;i<rowcount-1;i++) {
+    thread_args_array[i].thread_id = i;
+    thread_args_array[i].target_row = complete_data_set[0];//WARNING: this row is being passed into every thread, so DO NOT EDIT while in thread
+    thread_args_array[i].other_row = complete_data_set[i-1];
+    thread_temp = pthread_create(&threads[i], NULL, linear_regression, (void *) &thread_args_array[i]);
   }
-
-  //separate 2 dimensional array into multiple 1 dimensional arrays
-
-  //set up individual thread for each regression to be run on
 
   //launch linear_regression on each thread
 
