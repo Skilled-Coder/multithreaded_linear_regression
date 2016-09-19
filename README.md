@@ -4,21 +4,7 @@
 WORK IN PROGRESS
 
 
-* if anybody wants to use this code for anything or has questions about it, feel free to email me at charliegsummers@gmail.com *
-
-
-the goal of this project is to learn/practice a few concepts and connect them together
-
-1. practice using github
-
-2. learning how to use multithreaded processing to (hopefully) optimize the program
-
-3. practice linear regression - i've written linear regression models in python, but never in c
-
-4. practice c - this is my second c program in recent memory, so i'm excited to get my hands (really) dirty
-
-i'm hoping that the result of this practice will be that i'm better prepared for 42 - i will be attending Piscine in a little over a month and want to be ready
-
+* if anybody wants to use this code for anything or has questions about it, feel free to email me at charliegsummers@gmail.com
 
 what this code will do:
 
@@ -31,9 +17,7 @@ the result of each thread will be the line-of-best-fit for each relationship, wh
 
 TODO:
 
-- start project XXXXX 20 August 2016
-
-- input data from file XXXXX 22 August 2016
+- input data from file XXXXX
 
 - linear regression on one thread
 
